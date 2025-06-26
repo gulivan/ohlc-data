@@ -254,6 +254,7 @@ def run_visualization(
     trading_date=None,
     verbose=True,
     optimized=False,
+    save_data=False,
 ):
     """
     Run the pipeline and generate comprehensive graphical visualizations.
@@ -264,6 +265,8 @@ def run_visualization(
         initial_price: Starting price for simulation
         trading_date: Date for the trading session
         verbose: Whether to print detailed output
+        optimized: Use optimized algorithm
+        save_data: Safe data or not
     """
     if verbose:
         print("📊 VISUALIZATION MODE")
@@ -271,14 +274,13 @@ def run_visualization(
         print("Generating data and creating comprehensive visual reports...")
         print()
 
-    # Run the main pipeline without saving CSV files
     results = run_pipeline(
         seed=seed,
         volatility=volatility,
         initial_price=initial_price,
         trading_date=trading_date,
         verbose=verbose,
-        save_data=False,
+        save_data=save_data,
         optimized=optimized,
     )
 
@@ -435,6 +437,7 @@ Examples:
                 trading_date=trading_date,
                 verbose=not args.quiet,
                 optimized=args.optimized,
+                save_data=args.save_data,
             )
 
             if not args.quiet:
